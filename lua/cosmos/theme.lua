@@ -4,40 +4,40 @@ local theme = {}
 
 theme.loadSyntax = function()
     local syntax = {
-        Boolean = { fg = p.amber },
-        Character = { fg = p.amber },
-        Comment = { fg = p.stardust, style = 'italic' },
-        Conditional = { fg = p.nebula },
-        Constant = { fg = p.amber },
+        Boolean = { fg = p.mist },
+        Character = { fg = p.cotton },
+        Comment = { fg = p.moonlight, style = 'italic' },
+        Conditional = { fg = p.amethyst },
+        Constant = { fg = p.moss },
         Debug = { fg = p.ember },
-        Define = { fg = p.celeste },
-        Delimiter = { fg = p.ember },
-        Error = { fg = p.blaze },
-        Exception = { fg = p.nebula },
-        Float = { fg = p.amber },
-        Function = { fg = p.ember },
-        Identifier = { fg = p.ember },
+        Define = { fg = p.rose },
+        Delimiter = { fg = p.moonshine },
+        Error = { fg = p.ember },
+        Exception = { fg = p.blaze },
+        Float = { fg = p.sunrise },
+        Function = { fg = p.moss },
+        Identifier = { fg = p.nebula },
         -- Ignore = { fg = '' },
-        Include = { fg = p.celeste },
+        Include = { fg = p.rose },
         Keyword = { fg = p.nebula },
-        Label = { fg = p.nebula },
-        Macro = { fg = p.celeste },
-        Number = { fg = p.amber },
-        Operator = { fg = p.nebula },
-        PreCondit = { fg = p.celeste },
-        PreProc = { fg = p.celeste },
-        Repeat = { fg = p.nebula },
-        Special = { fg = p.ember },
-        SpecialChar = { fg = p.ember },
-        SpecialComment = { fg = p.celeste },
-        Statement = { fg = p.nebula },
-        StorageClass = { fg = p.moonshine },
-        String = { fg = p.amber },
-        Structure = { fg = p.moonshine },
-        Tag = { fg = p.ember },
-        Todo = { fg = p.celeste },
-        Type = { fg = p.moonshine },
-        Typedef = { fg = p.moonshine },
+        Label = { fg = p.moss },
+        Macro = { fg = p.velvet },
+        Number = { fg = p.sunrise },
+        Operator = { fg = p.velvet },
+        PreCondit = { fg = p.velvet },
+        PreProc = { fg = p.velvet },
+        Repeat = { fg = p.amethyst },
+        Special = { fg = p.lilac },
+        --SpecialChar = { fg = p.ember },
+        --SpecialComment = { fg = p.celeste },
+        Statement = { fg = p.quartz },
+        StorageClass = { fg = p.blaze },
+        String = { fg = p.nova },
+        Structure = { fg = p.lilac },
+        Tag = { fg = p.moonshine },
+        Todo = { fg = p.celeste, style = 'bold' },
+        Type = { fg = p.sunset },
+        Typedef = { fg = p.sky },
         Underlined = { fg = p.moonshine, style = 'underline' },
 
         -- htmlH1 = { fg = '' },
@@ -61,90 +61,85 @@ theme.loadEditor = function()
     local editor = {
         -- ColorColumn = {},
         -- Conceal = {},
-        -- Cursor = {},
+        Cursor = { fg = p.rose, bg = p.rose },
         -- CursorColumn = {},
         -- CursorIM = {},
-        CursorLine = { bg = p.lunar_dust },
-        CursorLineNr = { fg = p.starlight },
+        CursorLine = { bg = p.dusty_crater },
+        CursorLineNr = { fg = p.wisteria },
         DiffAdd = { fg = '', bg = '' },
         DiffChange = { fg = '', bg = '' },
         DiffDelete = { fg = '', bg = '' },
-        Diffstarlight = { fg = '', bg = '' },
-        Directory = { fg = p.moonshine },
+        DiffText = { fg = '', bg = '' },
+        Directory = { fg = p.mint_leaf },
         -- EndOfBuffer = {},
-        ErrorMsg = { fg = p.blaze, style = 'bold' },
-        -- FoldColumn = {},
-        -- Folded = {},
-        IncSearch = { bg = p.starry_night },
-        LineNr = { fg = p.lunar_dust },
-        MatchParen = { fg = p.starlight, bg = p.lunar_dust },
+        ErrorMsg = { fg = p.ember, style = 'bold' },
+        FoldColumn = { fg = p.moonlight, bg = p.dusty_crater },
+        Folded = { fg = p.moonlight, bg = p.dusty_crater },
+        IncSearch = { fg = p.seafoam, bg = p.sky },
+        LineNr = { fg = p.mist },
+        MatchParen = { fg = p.sunglow, bg = nil, style = 'underline' },
         -- ModeMsg = {},
         MoreMsg = { fg = p.celeste },
-        Nonstarlight = { fg = p.lunar_dust },
-        Normal = { fg = p.starlight },
-        -- NormalFloat = {},
-        Pmenu = { fg = p.stardust, bg = p.surface },
-        PmenuSbar = { bg = p.starry_night },
-        PmenuSel = { fg = p.starlight, bg = p.starry_night },
-        PmenuThumb = { bg = p.lunar_dust },
-        Question = { fg = p.amber },
+        NonText = { fg = p.moonshine },
+        Normal = { fg = p.starlight, bg = p.cosmic_abyss },
+        NormalFloat = { fg = p.starlight, bg = p.cosmic_void },
+        Pmenu = { fg = p.moonshine, bg = p.dusty_crater },
+        PmenuSbar = { bg = p.cygnus },
+        PmenuSel = { fg = p.cygnus, bg = p.starry_night },
+        PmenuThumb = { bg = p.dusty_crater },
+        Question = { fg = p.starlight, bg = p.starry_night },
         -- QuickFixLine = {},
-        Search = { fg = p.celeste, bg = p.lunar_dust },
-        SpecialKey = { fg = p.moonshine },
+        Search = { fg = p.sunset, bg = nil, style = 'underline' },
+        SpecialKey = { fg = nil },
         -- SpellBad = {},
         -- SpellCap = {},
         -- SpellLocal = {},
         -- SpellRare = {},
         SignColumn = {},
-        -- StatusLine = {},
+        StatusLine = { fg = p.moonshine, bg = p.cosmic_void },
         -- StatusLineNC = {},
         -- StatusLineTerm = {},
         -- StatusLineTermNC = {},
-        -- TabLine = {},
+        TabLine = { fg = p.moonshine, bg = p.dusty_crater },
         -- TabLineFill = {},
         -- TabLineSel = {},
-        Title = { fg = p.ember },
-        VertSplit = { fg = p.starry_night },
-        Visual = { bg = p.dusty_crater },
+        Title = { fg = p.moss },
+        VertSplit = { fg = p.amethyst },
+        Visual = { bg = p.lunar_dust },
         -- VisualNOS = {},
-        WarningMsg = { fg = p.amber },
+        WarningMsg = { fg = p.sunset },
         -- Whitespace = {},
         -- WildMenu = {},
     }
 
-    if vim.g.ember_nebula_disable_background == true then
-        editor.Normal = { fg = p.starlight, bg = p.none }
-        editor.SignColumn = { fg = p.starlight, bg = p.none }
-    else
-        editor.Normal = { fg = p.starlight, bg = p.base }
-        editor.SignColumn = { fg = p.starlight, bg = p.base }
-    end
+    editor.Normal = { fg = p.starlight, bg = p.cosmic_void }
+    editor.SignColumn = { fg = nil, bg = nil }
 
     return editor
 end
 
 theme.loadTerminal = function()
     -- black
-    vim.g.terminal_color_0 = p.cosmic_void
-    vim.g.terminal_color_8 = p.cosmic_abyss
+    vim.g.terminal_color_0 = p.cosmic_abyss
+    vim.g.terminal_color_8 = p.cosmic_void
     -- red
-    vim.g.terminal_color_4 = p.ember
-    vim.g.terminal_color_12 = p.blaze
+    vim.g.terminal_color_4 = p.blaze
+    vim.g.terminal_color_12 = p.ember
     -- green
-    vim.g.terminal_color_2 = p.moss
-    vim.g.terminal_color_10 = p.floss
+    vim.g.terminal_color_2 = p.mint_leaf
+    vim.g.terminal_color_10 = p.moss
     -- yellow
-    vim.g.terminal_color_6 = p.amber
+    vim.g.terminal_color_6 = p.sunset
     vim.g.terminal_color_14 = p.sunglow
     -- blue
-    vim.g.terminal_color_1 = p.nebula
-    vim.g.terminal_color_9 = p.sky
+    vim.g.terminal_color_1 = p.sky
+    vim.g.terminal_color_9 = p.nebula
     -- magenta
-    vim.g.terminal_color_5 = p.amethyst
+    vim.g.terminal_color_5 = p.rose
     vim.g.terminal_color_13 = p.wisteria
     -- cyan
-    vim.g.terminal_color_3 = p.seafoam
-    vim.g.terminal_color_11 = p.celeste
+    vim.g.terminal_color_3 = p.celeste
+    vim.g.terminal_color_11 = p.seafoam
     -- white
     vim.g.terminal_color_7 = p.starlight
     vim.g.terminal_color_15 = p.moonshine
@@ -154,54 +149,54 @@ theme.loadTreesitter = function()
     local treesitter = {
         -- TSAnnotation = {},
         -- TSAttribute = {},
-        -- TSBoolean = {},
-        -- TSCharacter = {},
-        TSComment = { fg = p.stardust },
-        -- TSConditional = {},
-        TSConstBuiltin = { fg = p.blaze },
-        -- TSConstMacro = {},
-        -- TSConstant = {},
-        TSConstructor = { fg = p.starlight },
+        TSBoolean = { fg = p.mist },
+        TSCharacter = { fg = p.cotton },
+        TSComment = { fg = p.moonlight, style = 'italic' },
+        TSConditional = { fg = p.amethyst },
+        TSConstBuiltin = { fg = p.celeste },
+        TSConstMacro = { fg = p.velvet },
+        TSConstant = { fg = p.moss },
+        TSConstructor = { fg = p.cotton },
         -- TSEmphasis = {},
-        -- TSError = {},
-        -- TSException = {},
-        -- TSField = {},
-        -- TSFloat = {},
-        TSFuncBuiltin = { fg = p.blaze },
-        -- TSFuncMacro = {},
-        -- TSFunction = {},
-        -- TSInclude = {},
-        -- TSKeyword = {},
-        -- TSKeywordFunction = {},
-        -- TSLabel = {},
+        TSError = { fg = p.ember, style = 'bold' },
+        TSException = { fg = p.blaze },
+        TSField = { fg = p.mint_leaf },
+        TSFloat = { fg = p.sunrise },
+        TSFuncBuiltin = { fg = p.lone },
+        TSFuncMacro = { fg = p.velvet },
+        TSFunction = { fg = p.moss },
+        TSInclude = { fg = p.rose },
+        TSKeyword = { fg = p.nebula },
+        TSKeywordFunction = { fg = p.nebula },
+        TSLabel = { fg = p.moss },
         -- TSLiteral = {},
-        -- TSMethod = {},
-        -- TSNamespace = {},
+        TSMethod = { fg = p.sunrise },
+        TSNamespace = { fg = p.velvet },
         -- TSNone = {},
-        -- TSNumber = {},
-        -- TSOperator = {},
-        -- TSParameter = {},
-        -- TSParameterReference = {},
+        TSNumber = { fg = p.sunrise },
+        TSOperator = { fg = p.velveet },
+        TSParameter = { fg = p.seafoam },
+        TSParameterReference = { fg = p.seafoam },
         -- TSProperty = {},
-        TSPunctBracket = { fg = p.stardust },
-        TSPunctDelimiter = { fg = p.stardust },
-        TSPunctSpecial = { fg = p.stardust },
-        -- TSRepeat = {},
+        TSPunctBracket = { fg = p.moonshine },
+        TSPunctDelimiter = { fg = p.moonshine },
+        TSPunctSpecial = { fg = p.moonshine },
+        TSRepeat = { fg = p.amethyst },
         -- TSStrike = {},
-        -- TSString = {},
-        TSStringEscape = { fg = p.nebula },
+        TSString = { fg = p.nova },
+        TSStringEscape = { fg = p.nova },
         -- TSStringRegex = {},
         -- TSSymbol = {},
         TSTag = { fg = p.moonshine },
-        TSTagDelimiter = { fg = p.stardust },
-        -- TSstarlight = {},
+        TSTagDelimiter = { fg = p.moonshine },
+        TSText = { fg = p.starlight },
         -- TSTitle = {},
-        -- TSType = {},
-        -- TSTypeBuiltin = {},
+        TSType = { fg = p.sunset },
+        TSTypeBuiltin = { fg = p.sunset },
         -- TSURI = {},
-        -- TSUnderline = {},
-        -- TSVariable = {},
-        TSVariableBuiltin = { fg = p.blaze },
+        TSUnderline = { fg = p.moonshine, style = 'underline' },
+        TSVariable = { fg = p.seafoam },
+        TSVariableBuiltin = { fg = p.seafoam },
     }
 
     return treesitter
@@ -209,29 +204,29 @@ end
 
 theme.loadLsp = function()
     local lsp = {
-        LspDiagnosticsDefaultError = { fg = p.blaze },
-        LspDiagnosticsDefaultHint = { fg = p.celeste },
-        LspDiagnosticsDefaultInformation = { fg = p.moonshine },
-        LspDiagnosticsDefaultWarning = { fg = p.amber },
-        LspDiagnosticsFloatingError = { fg = p.blaze },
-        LspDiagnosticsFloatingHint = { fg = p.celeste },
+        LspDiagnosticsDefaultError = { fg = p.ember, style = 'bold' },
+        LspDiagnosticsDefaultHint = { fg = p.stellar },
+        LspDiagnosticsDefaultInformation = { fg = p.seafoam },
+        LspDiagnosticsDefaultWarning = { fg = p.sunglow },
+        LspDiagnosticsFloatingError = { fg = p.ember, style = 'bold' },
+        LspDiagnosticsFloatingHint = { fg = p.seafoam },
         LspDiagnosticsFloatingInformation = { fg = p.moonshine },
-        LspDiagnosticsFloatingWarning = { fg = p.amber },
-        LspDiagnosticsSignError = { fg = p.blaze },
-        LspDiagnosticsSignHint = { fg = p.celeste },
+        LspDiagnosticsFloatingWarning = { fg = p.sunglow },
+        LspDiagnosticsSignError = { fg = p.ember, style = 'bold' },
+        LspDiagnosticsSignHint = { fg = p.seafoam },
         LspDiagnosticsSignInformation = { fg = p.moonshine },
-        LspDiagnosticsSignWarning = { fg = p.amber },
-        LspDiagnosticsUnderlineError = { style = 'undercurl', sp = p.blaze },
-        LspDiagnosticsUnderlineHint = { style = 'undercurl', sp = p.celeste },
+        LspDiagnosticsSignWarning = { fg = p.sunglow },
+        LspDiagnosticsUnderlineError = { style = 'undercurl', sp = p.ember },
+        LspDiagnosticsUnderlineHint = { style = 'undercurl', sp = p.seafoam },
         LspDiagnosticsUnderlineInformation = { style = 'undercurl', sp = p.moonshine },
-        LspDiagnosticsUnderlineWarning = { style = 'undercurl', sp = p.amber },
-        LspDiagnosticsVirtualstarlightError = { fg = p.blaze },
-        LspDiagnosticsVirtualstarlightHint = { fg = p.celeste },
-        LspDiagnosticsVirtualstarlightInformation = { fg = p.moonshine },
-        LspDiagnosticsVirtualstarlightWarning = { fg = p.amber },
-        LspReferenceRead = { fg = p.ember, bg = p.dusty_crater },
-        LspReferencestarlight = { fg = p.ember, bg = p.dusty_crater },
-        LspReferenceWrite = { fg = p.ember, bg = p.dusty_crater },
+        LspDiagnosticsUnderlineWarning = { style = 'undercurl', sp = p.sunglow },
+        LspDiagnosticsVirtualTextError = { fg = p.ember },
+        LspDiagnosticsVirtualTextHint = { fg = p.seafoam },
+        LspDiagnosticsVirtualTextInformation = { fg = p.moonshine },
+        LspDiagnosticsVirtualTextWarning = { fg = p.sunglow },
+        LspReferenceRead = { fg = nil, bg = nil, style = 'underline' },
+        LspReferenceWrite = { fg = nil, bg = nil, style = 'underline' },
+        LspReferenceText = { fg = nil, bg = nil, style = 'underline' },
     }
 
     return lsp
