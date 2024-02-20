@@ -46,12 +46,12 @@ theme.loadSyntax = function()
 		-- htmlH4 = { fg = '' },
 		-- htmlH5 = { fg = '' },
 		-- htmlLink = { fg = '' },
-		-- markdownH1 = { fg = '' },
-		-- markdownH1Delimeter = { fg = '' },
-		-- markdownH2 = { fg = '' },
-		-- markdownH2Delimeter = { fg = '' },
-		-- markdownH3 = { fg = '' },
-		-- markdownH3Delimeter = { fg = '' },
+		-- markdownH1 = { fg = nil, bg = nil },
+		-- markdownH1Delimeter = { fg = nil, bg = nil },
+		-- markdownH2 = { fg = nil, bg = nil },
+		-- markdownH2Delimeter = { fg = nil, bg = nil },
+		-- markdownH3 = { fg = nil, bg = nil },
+		-- markdownH3Delimeter = { fg = nil, bg = nil },
 	}
 
 	return syntax
@@ -204,10 +204,10 @@ end
 
 theme.loadLsp = function()
 	local lsp = {
-		LspDiagnosticsDefaultError = { fg = p.ember, style = "bold" },
-		LspDiagnosticsDefaultHint = { fg = p.stellar },
-		LspDiagnosticsDefaultInformation = { fg = p.seafoam },
-		LspDiagnosticsDefaultWarning = { fg = p.sunglow },
+		LspDiagnosticsDefaultError = { fg = p.ember, bg = p.velvet, style = "bold" },
+		LspDiagnosticsDefaultHint = { fg = p.stellar, bg = p.wormhole, style = "bold" },
+		LspDiagnosticsDefaultInformation = { fg = p.seafoam, bg = p.mist, style = "bold" },
+		LspDiagnosticsDefaultWarning = { fg = p.sunglow, bg = p.sunset, style = "bold" },
 		LspDiagnosticsFloatingError = { fg = p.ember, style = "bold" },
 		LspDiagnosticsFloatingHint = { fg = p.seafoam },
 		LspDiagnosticsFloatingInformation = { fg = p.moonshine },
@@ -220,10 +220,10 @@ theme.loadLsp = function()
 		LspDiagnosticsUnderlineHint = { style = "undercurl", sp = p.seafoam },
 		LspDiagnosticsUnderlineInformation = { style = "undercurl", sp = p.moonshine },
 		LspDiagnosticsUnderlineWarning = { style = "undercurl", sp = p.sunglow },
-		LspDiagnosticsVirtualTextError = { fg = p.ember },
-		LspDiagnosticsVirtualTextHint = { fg = p.seafoam },
-		LspDiagnosticsVirtualTextInformation = { fg = p.moonshine },
-		LspDiagnosticsVirtualTextWarning = { fg = p.sunglow },
+		LspDiagnosticsVirtualTextError = { fg = p.ember, bg = p.velvet, style = "bold" },
+		LspDiagnosticsVirtualTextHint = { fg = p.seafoam, bg = p.cygnus, style = "bold" },
+		LspDiagnosticsVirtualTextInformation = { fg = p.moonshine, bg = p.wormhole, style = "bold" },
+		LspDiagnosticsVirtualTextWarning = { fg = p.sunglow, bg = p.sunset, style = "bold" },
 		LspReferenceRead = { fg = nil, bg = nil, style = "underline" },
 		LspReferenceWrite = { fg = nil, bg = nil, style = "underline" },
 		LspReferenceText = { fg = nil, bg = nil, style = "underline" },
