@@ -25,34 +25,34 @@ function util.load()
     vim.g.colors_name = 'cosmos'
 
     local async
-    -- async = vim.loop.new_async(vim.schedule_wrap(function()
-    --     theme.loadTerminal()
-    --     local treesitter = theme.loadTreesitter()
-    --     local lsp = theme.loadLsp()
-    --
-    --     for group, colors in pairs(treesitter) do
-    --         util.highlight(group, colors)
-    --     end
-    --
-    --     for group, colors in pairs(lsp) do
-    --         util.highlight(group, colors)
-    --     end
-    --
-    --     -- Add a nil check for async
-    --     if async then async:close() end
-    -- end))
+    async = vim.loop.new_async(vim.schedule_wrap(function()
+        theme.loadTerminal()
+        -- local treesitter = theme.loadTreesitter()
+        -- local lsp = theme.loadLsp()
+        --
+        -- for group, colors in pairs(treesitter) do
+        --     util.highlight(group, colors)
+        -- end
+        --
+        -- for group, colors in pairs(lsp) do
+        --     util.highlight(group, colors)
+        -- end
+
+        -- Add a nil check for async
+        if async then async:close() end
+    end))
 
     -- load priority groups first
     local editor = theme.loadEditor()
-    -- local syntax = theme.loadSyntax()
+    local syntax = theme.loadSyntax()
 
     for group, colors in pairs(editor) do
         util.highlight(group, colors)
     end
 
-    -- for group, colors in pairs(syntax) do
-    --     util.highlight(group, colors)
-    -- end
+    for group, colors in pairs(syntax) do
+        util.highlight(group, colors)
+    end
 
     if async then async:send() end
 end

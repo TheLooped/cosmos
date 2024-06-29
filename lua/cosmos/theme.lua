@@ -2,60 +2,79 @@ local p = require("cosmos.palette")
 
 local theme = {}
 
--- theme.loadSyntax = function()
---     local syntax = {
---         Boolean = { fg = p.mist },
---         Character = { fg = p.cotton },
---         Comment = { fg = p.moonlight, style = "italic" },
---         Conditional = { fg = p.amethyst },
---         Constant = { fg = p.moss },
---         Debug = { fg = p.ember },
---         Define = { fg = p.rose },
---         Delimiter = { fg = p.moonshine },
---         Error = { fg = p.ember },
---         Exception = { fg = p.blaze },
---         Float = { fg = p.sunrise },
---         Function = { fg = p.moss },
---         Identifier = { fg = p.nebula },
---         -- Ignore = { fg = '' },
---         Include = { fg = p.rose },
---         Keyword = { fg = p.nebula },
---         Label = { fg = p.moss },
---         Macro = { fg = p.velvet },
---         Number = { fg = p.sunrise },
---         Operator = { fg = p.velvet },
---         PreCondit = { fg = p.velvet },
---         PreProc = { fg = p.velvet },
---         Repeat = { fg = p.amethyst },
---         Special = { fg = p.lilac },
---         --SpecialChar = { fg = p.ember },
---         --SpecialComment = { fg = p.celeste },
---         Statement = { fg = p.quartz },
---         StorageClass = { fg = p.blaze },
---         String = { fg = p.nova },
---         Structure = { fg = p.lilac },
---         Tag = { fg = p.moonshine },
---         Todo = { fg = p.celeste, style = "bold" },
---         Type = { fg = p.sunset },
---         Typedef = { fg = p.sky },
---         Underlined = { fg = p.moonshine, style = "underline" },
---
---         -- htmlH1 = { fg = '' },
---         -- htmlH2 = { fg = '' },
---         -- htmlH3 = { fg = '' },
---         -- htmlH4 = { fg = '' },
---         -- htmlH5 = { fg = '' },
---         -- htmlLink = { fg = '' },
---         -- markdownH1 = { fg = nil, bg = nil },
---         -- markdownH1Delimeter = { fg = nil, bg = nil },
---         -- markdownH2 = { fg = nil, bg = nil },
---         -- markdownH2Delimeter = { fg = nil, bg = nil },
---         -- markdownH3 = { fg = nil, bg = nil },
---         -- markdownH3Delimeter = { fg = nil, bg = nil },
---     }
---
---     return syntax
--- end
+theme.loadSyntax = function()
+    local syntax = {
+        Boolean = { fg = p.mist },
+        Character = { fg = p.sunrise },
+        Comment = { fg = p.glow, style = "italic" },
+        Conditional = { fg = p.mist },
+        Constant = { fg = p.moss, style = "bold" },
+        Debug = { fg = p.ember },
+        Define = { fg = p.quartz },
+        Delimiter = { fg = p.glow },
+        Error = { fg = p.ember },
+        Exception = { fg = p.cotton },
+        Float = { fg = p.sunrise },
+        Function = { fg = p.hallow },
+        Identifier = { fg = p.moss, style = "bold" },
+        -- -- Ignore = { fg = '' },
+        Include = { link = "PreProc" },
+        Keyword = { fg = p.lilac },
+        Label = { fg = p.cygnus },
+        Macro = { fg = p.quartz },
+        Number = { fg = p.sunrise },
+        Operator = { fg = p.velvet },
+        PreCondit = { link = "PreProc" },
+        PreProc = { fg = p.velvet },
+        Repeat = { fg = p.lilac },
+        Special = { fg = p.floss, style = "italic" },
+        SpecialChar = { fg = p.floss, style = "italic" },
+        SpecialComment = { fg = p.celeste },
+        Statement = { fg = p.lone, style = "bold" },
+        StorageClass = { fg = p.blaze },
+        String = { fg = p.nova },
+        Structure = { fg = p.lilac },
+        Tag = { fg = p.moonshine },
+        Todo = { fg = p.hallow, style = "bold" },
+        Type = { fg = p.sunset },
+        Typedef = { link = "Type" },
+
+        Underlined = { style = "underline" },
+        Bold = { style = "bold" },
+        Italic = { style = "italic" },
+
+        -- illuminate
+        illuminatedWord = { bg = p.moonglow },
+        illuminatedCurWord = { bg = p.moonglow },
+
+        -- diff
+        diffAdded = { fg = p.floss },
+        diffRemoved = { fg = p.blaze },
+        diffChanged = { fg = p.hallow },
+        diffOldFile = { fg = p.sunset },
+        diffNewFile = { fg = p.rose },
+        diffFile = { fg = p.hallow },
+        diffLine = { fg = p.glow },
+        diffIndexLine = { fg = p.cygnus },
+        DiffAdd = { bg = p.floss },
+        DiffChange = { bg = p.mist },
+        DiffDelete = { bg = p.blaze },
+        DiffText = { bg = p.sky },
+
+        -- NeoVim
+        healthError = { fg = p.ember },
+        healthSuccess = { fg = p.seafoam },
+        healthWarning = { fg = p.sunset },
+
+        htmlH1 = { fg = p.velvet, style = "bold" },
+        htmlH2 = { fg = p.mist, style = "bold" },
+        htmlH3 = { fg = p.mint, style = "bold" },
+        htmlH4 = { fg = p.sunrise, style = "bold" },
+        htmlH5 = { fg = p.rose, style = "bold" },
+        htmlLink = { fg = p.quartz, style = "underline" },
+    }
+    return syntax
+end
 
 theme.loadEditor = function()
     local editor = {
@@ -118,32 +137,37 @@ theme.loadEditor = function()
     return editor
 end
 
--- theme.loadTerminal = function()
---     -- black
---     vim.g.terminal_color_0 = p.cosmic_abyss
---     vim.g.terminal_color_8 = p.cosmic_void
---     -- red
---     vim.g.terminal_color_4 = p.blaze
---     vim.g.terminal_color_12 = p.ember
---     -- green
---     vim.g.terminal_color_2 = p.mint_leaf
---     vim.g.terminal_color_10 = p.moss
---     -- yellow
---     vim.g.terminal_color_6 = p.sunset
---     vim.g.terminal_color_14 = p.sunglow
---     -- blue
---     vim.g.terminal_color_1 = p.sky
---     vim.g.terminal_color_9 = p.nebula
---     -- magenta
---     vim.g.terminal_color_5 = p.rose
---     vim.g.terminal_color_13 = p.wisteria
---     -- cyan
---     vim.g.terminal_color_3 = p.celeste
---     vim.g.terminal_color_11 = p.seafoam
---     -- white
---     vim.g.terminal_color_7 = p.starlight
---     vim.g.terminal_color_15 = p.moonshine
--- end
+theme.loadTerminal = function()
+    local term_colors = {
+        terminal_color_0 = p.dust,
+        terminal_color_8 = p.glow,
+
+        terminal_color_1 = p.ember,
+        terminal_color_9 = p.blae,
+
+        terminal_color_2 = p.moss,
+        terminal_color_10 = p.floss,
+
+        terminal_color_3 = p.sunset,
+        terminal_color_11 = p.sunshine,
+
+        terminal_color_4 = p.hallow,
+        terminal_color_12 = p.sky,
+
+        terminal_color_5 = p.lilac,
+        terminal_color_13 = p.rose,
+
+        terminal_color_6 = p.seafoam,
+        terminal_color_14 = p.celeste,
+
+        terminal_color_7 = p.moonglow,
+        terminal_color_15 = p.moonlight,
+    }
+
+    for color, value in pairs(term_colors) do
+        vim.g[color] = value
+    end
+end
 
 -- theme.loadTreesitter = function()
 --     local treesitter = {
