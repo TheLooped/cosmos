@@ -1,42 +1,64 @@
 local palette = {
 
+    ----------------
+    --BackGrounds---
     -----------------
-    ---BackGrounds---
-    -----------------
+    void      = "#060e15",
+    nebula    = "#081017",
+    abyss     = "#0a1219",
 
-    deep_nebula = "#011423",
-    light_nebula = "#01192d",
-    cosmic_void = "#1C1F33",  -- Main BG
-    cosmic_abyss = "#171726", -- Alt BG
-    wormhole = "#2F2F4C",
+    lunar     = "#707c8a",
+    dust      = "#637381",
+    glow      = "#5e6a78",
 
-    starry_night = "#2A2D41", -- BG Highlight hard
-    lunar_dust = "#2e3145",   -- BG Highlight medium
-    dusty_crater = "#303347", -- BG Highlight soft
-    -- Main editor background
-    -- Sidebar background
-    -- Popup menu background
-    -- Selected item background
-    -- Diff background (for git changes)
+    lumen     = "#23292e",
+    umbra     = "#192025",
+    penumbra  = "#11181e",
 
     -----------------
     ---ForeGrounds---
     -----------------
 
-    starlight = "#D5E0EC", -- Main FG
-    moonshine = "#C7E1FB", -- Alt FG
-    moonlight = "#A6B3E3",
-    stardust = "#AEBDE1",  -- Comments
-    stellar = "#AEC4D3",
-    celestial = "#c7d3ea",
-    -- Normal text
-    -- Comments
-    -- Keywords
-    -- Strings
-    -- Numbers
-    -- Functions
-    -- Types/Classes
-    -- Variables
-    -- Constants
+    moonglow  = "#d8ebfe",
+    moonlight = "#d6def5",
+    moonshine = "#e0e7f9",
+
+    -----------------
+    ---Highlights---
+    -----------------
+
+    hallow    = "#657CE2",
+    sky       = "#8799E8",
+    mist      = "#8f99cc",
+
+    celeste   = "#A1F6FF",
+    cygnus    = "#B2FBFF",
+    seafoam   = "#C2FFFF",
+
+    moss      = "#4CE47E",
+    floss     = "#74D899",
+    mint      = "#9AE4A6",
+
+    flare     = "#FF7733",
+    nova      = "#FF8547",
+    sunrise   = "#FFB96D",
+
+    lilac     = "#FF9AEE",
+    cotton    = "#FFA4F0",
+    rose      = "#FFADF1",
+
+    wisteria  = "#8455c7",
+    lone      = "#8b56cc",
+    amethyst  = "#9157D1",
+    quartz    = "#B39AD3",
+
+    ember     = "#cc0202",
+    blaze     = "#FF5C5C",
+    velvet    = "#f46363",
+
+    sunshine  = "#FFCC33",
+    sunglow   = "#FFD147",
+    sunset    = "#FFBE69",
+
 }
 return palette
