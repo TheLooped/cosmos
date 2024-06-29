@@ -27,12 +27,12 @@ function util.load()
     local async
     async = vim.loop.new_async(vim.schedule_wrap(function()
         theme.loadTerminal()
-        -- local treesitter = theme.loadTreesitter()
+        local treesitter = theme.loadTreesitter()
         -- local lsp = theme.loadLsp()
         --
-        -- for group, colors in pairs(treesitter) do
-        --     util.highlight(group, colors)
-        -- end
+        for group, colors in pairs(treesitter) do
+            util.highlight(group, colors)
+        end
         --
         -- for group, colors in pairs(lsp) do
         --     util.highlight(group, colors)

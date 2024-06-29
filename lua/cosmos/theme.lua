@@ -7,7 +7,7 @@ theme.loadSyntax = function()
         Boolean = { fg = p.mist },
         Character = { fg = p.sunrise },
         Comment = { fg = p.glow, style = "italic" },
-        Conditional = { fg = p.mist },
+        Conditional = { fg = p.mint },
         Constant = { fg = p.moss, style = "bold" },
         Debug = { fg = p.ember },
         Define = { fg = p.quartz },
@@ -16,7 +16,7 @@ theme.loadSyntax = function()
         Exception = { fg = p.cotton },
         Float = { fg = p.sunrise },
         Function = { fg = p.hallow },
-        Identifier = { fg = p.moss, style = "bold" },
+        Identifier = { fg = p.wisteria, style = "bold" },
         -- -- Ignore = { fg = '' },
         Include = { link = "PreProc" },
         Keyword = { fg = p.lilac },
@@ -138,7 +138,7 @@ theme.loadEditor = function()
 end
 
 theme.loadTerminal = function()
-    local term_colors = {
+    local term_treesitter = {
         terminal_color_0 = p.dust,
         terminal_color_8 = p.glow,
 
@@ -164,67 +164,184 @@ theme.loadTerminal = function()
         terminal_color_15 = p.moonlight,
     }
 
-    for color, value in pairs(term_colors) do
+    for color, value in pairs(term_treesitter) do
         vim.g[color] = value
     end
 end
 
--- theme.loadTreesitter = function()
---     local treesitter = {
---         -- TSAnnotation = {},
---         -- TSAttribute = {},
---         TSBoolean = { fg = p.mist },
---         TSCharacter = { fg = p.cotton },
---         TSComment = { fg = p.moonlight, style = "italic" },
---         TSConditional = { fg = p.amethyst },
---         TSConstBuiltin = { fg = p.celeste },
---         TSConstMacro = { fg = p.velvet },
---         TSConstant = { fg = p.moss },
---         TSConstructor = { fg = p.cotton },
---         -- TSEmphasis = {},
---         TSError = { fg = p.ember, style = "bold" },
---         TSException = { fg = p.blaze },
---         TSField = { fg = p.mint_leaf },
---         TSFloat = { fg = p.sunrise },
---         TSFuncBuiltin = { fg = p.lone },
---         TSFuncMacro = { fg = p.velvet },
---         TSFunction = { fg = p.moss },
---         TSInclude = { fg = p.rose },
---         TSKeyword = { fg = p.nebula },
---         TSKeywordFunction = { fg = p.nebula },
---         TSLabel = { fg = p.moss },
---         -- TSLiteral = {},
---         TSMethod = { fg = p.sunrise },
---         TSNamespace = { fg = p.velvet },
---         -- TSNone = {},
---         TSNumber = { fg = p.sunrise },
---         TSOperator = { fg = p.velveet },
---         TSParameter = { fg = p.seafoam },
---         TSParameterReference = { fg = p.seafoam },
---         -- TSProperty = {},
---         TSPunctBracket = { fg = p.moonshine },
---         TSPunctDelimiter = { fg = p.moonshine },
---         TSPunctSpecial = { fg = p.moonshine },
---         TSRepeat = { fg = p.amethyst },
---         -- TSStrike = {},
---         TSString = { fg = p.nova },
---         TSStringEscape = { fg = p.nova },
---         -- TSStringRegex = {},
---         -- TSSymbol = {},
---         TSTag = { fg = p.moonshine },
---         TSTagDelimiter = { fg = p.moonshine },
---         TSText = { fg = p.starlight },
---         -- TSTitle = {},
---         TSType = { fg = p.sunset },
---         TSTypeBuiltin = { fg = p.sunset },
---         -- TSURI = {},
---         TSUnderline = { fg = p.moonshine, style = "underline" },
---         TSVariable = { fg = p.seafoam },
---         TSVariableBuiltin = { fg = p.seafoam },
---     }
---
---     return treesitter
--- end
+theme.loadTreesitter = function()
+    local treesitter = {
+        -- Identifiers
+        ["@variable"] = { fg = p.moonglow },               -- Any variable name that does not have another highlight.
+        ["@variable.builtin"] = { fg = p.velvet },         -- Variable names that are defined by the languages, like this or self.
+        ["@variable.parameter"] = { fg = p.flare },        -- For parameters of a function.
+        ["@variable.member"] = { fg = p.quartz },          -- For fields.
+
+        ["@constant"] = { link = "Constant" },             -- For constants
+        ["@constant.builtin"] = { fg = p.cotton },         -- For constant that are built in the language: nil in Lua.
+        ["@constant.macro"] = { link = "Macro" },          -- For constants that are defined by macros: NULL in C.
+
+        ["@module"] = { fg = p.quartz, style = "italic" }, -- For identifiers referring to modules and namespaces.
+        ["@label"] = { link = "Label" },                   -- For labels: label: in C and :label: in Lua.
+
+        -- Literals
+        ["@string"] = { link = "String" },                                         -- For strings.
+        ["@string.documentation"] = { fg = p.seafoam },                            -- For strings documenting code (e.g. Python docstrings).
+        ["@string.regexp"] = { fg = p.rose },                                      -- For regexes.
+        ["@string.escape"] = { fg = p.sunrise },                                   -- For escape characters within a string.
+        ["@string.special"] = { link = "Special" },                                -- other special strings (e.g. dates)
+        ["@string.special.path"] = { link = "Special" },                           -- filenames
+        ["@string.special.symbol"] = { fg = p.floss },                             -- symbols or atoms
+        ["@string.special.url"] = { fg = p.blaze, style = "italic", "underline" }, -- urls, links and emails
+
+        ["@character"] = { link = "Character" },                                   -- character literals
+        ["@character.special"] = { link = "SpecialChar" },                         -- special characters (e.g. wildcards)
+
+        ["@boolean"] = { link = "Boolean" },                                       -- For booleans.
+        ["@number"] = { link = "Number" },                                         -- For all numbers
+        ["@number.float"] = { link = "Float" },                                    -- For floats.
+
+        -- Types
+        ["@type"] = { link = "Type" },                           -- For types.
+        ["@type.builtin"] = { fg = p.sunset, style = "italic" }, -- For builtin types.
+        ["@type.definition"] = { link = "Type" },                -- type definitions (e.g. `typedef` in C)
+
+        ["@attribute"] = { link = "Constant" },                  -- attribute annotations (e.g. Python decorators)
+        ["@property"] = { fg = p.quartz },                       -- Same as TSField.
+
+        -- Functions
+        ["@function"] = { link = "Function" },             -- For function (calls and definitions).
+        ["@function.builtin"] = { fg = p.rose },           -- For builtin functions: table.insert in Lua.
+        ["@function.call"] = { link = "Function" },        -- function calls
+        ["@function.macro"] = { fg = p.seafoam },          -- For macro defined functions (calls and definitions): each macro_rules in Rust.
+
+        ["@function.method"] = { link = "Function" },      -- For method definitions.
+        ["@function.method.call"] = { link = "Function" }, -- For method calls.
+
+        ["@constructor"] = { fg = p.mint },                -- For constructor calls and definitions: = { } in Lua, and Java constructors.
+        ["@operator"] = { link = "Operator" },             -- For any operator: +, but also -> and * in C.
+
+        -- Keywords
+        ["@keyword"] = { link = "Keyword" },                      -- For keywords that don't fall in previous categories.
+        ["@keyword.modifier"] = { link = "Keyword" },             -- For keywords modifying other constructs (e.g. `const`, `static`, `public`)
+        ["@keyword.type"] = { link = "Keyword" },                 -- For keywords describing composite types (e.g. `struct`, `enum`)
+        ["@keyword.coroutine"] = { link = "Keyword" },            -- For keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+        ["@keyword.function"] = { fg = p.velvet },                -- For keywords used to define a function.
+        ["@keyword.operator"] = { link = "Operator" },            -- For new keyword operator
+        ["@keyword.import"] = { link = "Include" },               -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
+        ["@keyword.repeat"] = { link = "Repeat" },                -- For keywords related to loops.
+        ["@keyword.return"] = { fg = p.velvet },
+        ["@keyword.debug"] = { link = "Exception" },              -- For keywords related to debugging
+        ["@keyword.exception"] = { link = "Exception" },          -- For exception related keywords.
+
+        ["@keyword.conditional"] = { link = "Conditional" },      -- For keywords related to conditionnals.
+        ["@keyword.conditional.ternary"] = { link = "Operator" }, -- For ternary operators (e.g. `?` / `:`)
+
+        ["@keyword.directive"] = { link = "PreProc" },            -- various preprocessor directives & shebangs
+        ["@keyword.directive.define"] = { link = "Define" },      -- preprocessor definition directives
+        -- JS & derivative
+        ["@keyword.export"] = { fg = p.sky },
+
+        -- Punctuation
+        ["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters (e.g. `;` / `.` / `,`).
+        ["@punctuation.bracket"] = { fg = p.glow },          -- For brackets and parenthesis.
+        ["@punctuation.special"] = { link = "Special" },     -- For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
+
+        -- Comment
+        ["@comment"] = { link = "Comment" },
+        ["@comment.documentation"] = { link = "Comment" }, -- For comments documenting code
+
+        ["@comment.error"] = { fg = p.void, bg = p.ember },
+        ["@comment.warning"] = { fg = p.void, bg = p.sunset },
+        ["@comment.hint"] = { fg = p.void, bg = p.hallow },
+        ["@comment.todo"] = { fg = p.void, bg = p.lone },
+        ["@comment.note"] = { fg = p.void, bg = p.floss },
+
+        -- Markup
+        ["@markup"] = { fg = p.moonglow },                                        -- For strings considerated text in a markup language.
+        ["@markup.strong"] = { fg = p.blaze, style = "bold" },                    -- bold
+        ["@markup.italic"] = { fg = p.blaze, style = "italic" },                  -- italic
+        ["@markup.strikethrough"] = { fg = p.moonglow, style = "strikethrough" }, -- strikethrough text
+        ["@markup.underline"] = { link = "Underlined" },                          -- underlined text
+
+        ["@markup.heading"] = { fg = p.sky, style = "bold" },                     -- titles like: # Example
+
+        ["@markup.math"] = { fg = p.mist },                                       -- math environments (e.g. `$ ... $` in LaTeX)
+        ["@markup.quote"] = { fg = p.nova, style = "bold" },                      -- block quotes
+        ["@markup.environment"] = { fg = p.lilac },                               -- text environments of markup languages
+        ["@markup.environment.name"] = { fg = p.mist },                           -- text indicating the type of an environment
+
+        ["@markup.link"] = { link = "Tag" },                                      -- text references, footnotes, citations, etc.
+        ["@markup.link.label"] = { link = "Label" },                              -- link, reference descriptions
+        ["@markup.link.url"] = { fg = p.rose, style = "italic", "underline" },    -- urls, links and emails
+
+        ["@markup.raw"] = { fg = p.cygnus },                                      -- used for inline code in markdown and for doc in python (""")
+
+        ["@markup.list"] = { link = "Special" },
+        ["@markup.list.checked"] = { fg = p.moss },   -- todo notes
+        ["@markup.list.unchecked"] = { fg = p.dust }, -- todo notes
+
+        -- Diff
+        ["@diff.plus"] = { link = "diffAdded" },    -- added text (for diff files)
+        ["@diff.minus"] = { link = "diffRemoved" }, -- deleted text (for diff files)
+        ["@diff.delta"] = { link = "diffChanged" }, -- deleted text (for diff files)
+
+        -- Tags
+        ["@tag"] = { fg = p.velvet },                              -- Tags like html tag names.
+        ["@tag.attribute"] = { fg = p.seafoam, style = "italic" }, -- Tags like html tag names.
+        ["@tag.delimiter"] = { fg = p.sky },                       -- Tag delimiter like < > /
+
+        -- Misc
+        ["@error"] = { link = "Error" },
+
+        -- Language specific:
+        -- bash
+        ["@function.builtin.bash"] = { fg = p.velvet, style = "italic" },
+
+        -- css
+        ["@property.css"] = { fg = p.glow },
+        ["@property.id.css"] = { fg = p.hallow },
+        ["@property.class.css"] = { fg = p.sunset },
+        ["@type.css"] = { fg = p.glow },
+        ["@type.tag.css"] = { fg = p.velvet },
+        ["@string.plain.css"] = { fg = p.lilac },
+        ["@number.css"] = { fg = p.lilac },
+
+        -- toml
+        ["@property.toml"] = { fg = p.hallow }, -- Differentiates between string and properties
+
+        -- json
+        ["@label.json"] = { fg = p.hallow }, -- For labels: label: in C and :label: in Lua.
+
+        -- lua
+        ["@constructor.lua"] = { fg = p.lilac }, -- For constructor calls and definitions: = { } in Lua.
+
+        -- typescript
+        ["@property.typescript"] = { fg = p.glow },
+        ["@constructor.typescript"] = { fg = p.glow },
+
+        -- TSX (Typescript React)
+        ["@constructor.tsx"] = { fg = p.glow },
+        ["@tag.attribute.tsx"] = { fg = p.cygnus, style = "italic" },
+
+        -- yaml
+        ["@variable.member.yaml"] = { fg = p.mist }, -- For fields.
+
+
+        -- C/CPP
+        ["@type.builtin.c"] = { fg = p.sunset },
+        ["@property.cpp"] = { fg = p.moonglow },
+        ["@type.builtin.cpp"] = { fg = p.sunset },
+
+        -- gitcommit
+        ["@comment.warning.gitcommit"] = { fg = p.sunset },
+
+        -- Misc
+        gitcommitSummary = { fg = p.rose, style = "italic" },
+        zshKSHFunction = { link = "Function" },
+    }
+    return treesitter
+end
 
 -- theme.loadLsp = function()
 -- 	local lsp = {
