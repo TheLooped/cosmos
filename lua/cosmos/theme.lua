@@ -11,13 +11,13 @@ theme.loadSyntax = function()
         Constant = { fg = p.moss, style = "bold" },
         Debug = { fg = p.ember },
         Define = { fg = p.quartz },
-        Delimiter = { fg = p.glow },
+        Delimiter = { fg = p.moonlight },
         Error = { fg = p.ember },
         Exception = { fg = p.cotton },
         Float = { fg = p.sunrise },
         Function = { fg = p.hallow },
         Identifier = { fg = p.wisteria, style = "bold" },
-        -- -- Ignore = { fg = '' },
+        -- Ignore = {}
         Include = { link = "PreProc" },
         Keyword = { fg = p.lilac },
         Label = { fg = p.cygnus },
@@ -43,11 +43,11 @@ theme.loadSyntax = function()
         Bold = { style = "bold" },
         Italic = { style = "italic" },
 
-        -- illuminate
+
         illuminatedWord = { bg = p.moonglow },
         illuminatedCurWord = { bg = p.moonglow },
 
-        -- diff
+
         diffAdded = { fg = p.floss },
         diffRemoved = { fg = p.blaze },
         diffChanged = { fg = p.hallow },
@@ -61,7 +61,7 @@ theme.loadSyntax = function()
         DiffDelete = { bg = p.blaze },
         DiffText = { bg = p.sky },
 
-        -- NeoVim
+
         healthError = { fg = p.ember },
         healthSuccess = { fg = p.seafoam },
         healthWarning = { fg = p.sunset },
@@ -101,9 +101,9 @@ theme.loadEditor = function()
         NormalSB = { fg = p.moonglow, bg = p.nebula },
         NormalFloat = { fg = p.moonglow, bg = p.abyss },
         FloatBorder = { fg = p.glow, bg = p.abyss },
-        FloatTitle = { fg = p.moonlight },          -- Title of floating windows
-        Pmenu = { bg = p.abyss, fg = p.moonlight }, -- Popup menu: normal item.
-        PmenuSel = { bg = p.glow, style = "bold" }, -- Popup menu: selected item.
+        FloatTitle = { fg = p.moonlight },
+        Pmenu = { bg = p.abyss, fg = p.moonlight },
+        PmenuSel = { bg = p.glow, style = "bold" },
         PmenuSbar = { bg = p.dust },
         PmenuThumb = { bg = p.mist },
         Question = { fg = p.mist },
@@ -171,85 +171,85 @@ end
 
 theme.loadTreesitter = function()
     local treesitter = {
-        -- Identifiers
-        ["@variable"] = { fg = p.moonglow },               -- Any variable name that does not have another highlight.
-        ["@variable.builtin"] = { fg = p.velvet },         -- Variable names that are defined by the languages, like this or self.
-        ["@variable.parameter"] = { fg = p.flare },        -- For parameters of a function.
-        ["@variable.member"] = { fg = p.quartz },          -- For fields.
 
-        ["@constant"] = { link = "Constant" },             -- For constants
-        ["@constant.builtin"] = { fg = p.cotton },         -- For constant that are built in the language: nil in Lua.
-        ["@constant.macro"] = { link = "Macro" },          -- For constants that are defined by macros: NULL in C.
+        ["@variable"] = { fg = p.moonglow },
+        ["@variable.builtin"] = { fg = p.velvet },
+        ["@variable.parameter"] = { fg = p.flare },
+        ["@variable.member"] = { fg = p.quartz },
 
-        ["@module"] = { fg = p.quartz, style = "italic" }, -- For identifiers referring to modules and namespaces.
-        ["@label"] = { link = "Label" },                   -- For labels: label: in C and :label: in Lua.
+        ["@constant"] = { link = "Constant" },
+        ["@constant.builtin"] = { fg = p.cotton },
+        ["@constant.macro"] = { link = "Macro" },
 
-        -- Literals
-        ["@string"] = { link = "String" },                                         -- For strings.
-        ["@string.documentation"] = { fg = p.seafoam },                            -- For strings documenting code (e.g. Python docstrings).
-        ["@string.regexp"] = { fg = p.rose },                                      -- For regexes.
-        ["@string.escape"] = { fg = p.sunrise },                                   -- For escape characters within a string.
-        ["@string.special"] = { link = "Special" },                                -- other special strings (e.g. dates)
-        ["@string.special.path"] = { link = "Special" },                           -- filenames
-        ["@string.special.symbol"] = { fg = p.floss },                             -- symbols or atoms
-        ["@string.special.url"] = { fg = p.blaze, style = "italic", "underline" }, -- urls, links and emails
+        ["@module"] = { fg = p.quartz, style = "italic" },
+        ["@label"] = { link = "Label" },
 
-        ["@character"] = { link = "Character" },                                   -- character literals
-        ["@character.special"] = { link = "SpecialChar" },                         -- special characters (e.g. wildcards)
 
-        ["@boolean"] = { link = "Boolean" },                                       -- For booleans.
-        ["@number"] = { link = "Number" },                                         -- For all numbers
-        ["@number.float"] = { link = "Float" },                                    -- For floats.
+        ["@string"] = { link = "String" },
+        ["@string.documentation"] = { fg = p.seafoam },
+        ["@string.regexp"] = { fg = p.rose },
+        ["@string.escape"] = { fg = p.sunrise },
+        ["@string.special"] = { link = "Special" },
+        ["@string.special.path"] = { link = "Special" },
+        ["@string.special.symbol"] = { fg = p.floss },
+        ["@string.special.url"] = { fg = p.blaze, style = "italic", "underline" },
 
-        -- Types
-        ["@type"] = { link = "Type" },                           -- For types.
-        ["@type.builtin"] = { fg = p.sunset, style = "italic" }, -- For builtin types.
-        ["@type.definition"] = { link = "Type" },                -- type definitions (e.g. `typedef` in C)
+        ["@character"] = { link = "Character" },
+        ["@character.special"] = { link = "SpecialChar" },
 
-        ["@attribute"] = { link = "Constant" },                  -- attribute annotations (e.g. Python decorators)
-        ["@property"] = { fg = p.quartz },                       -- Same as TSField.
+        ["@boolean"] = { link = "Boolean" },
+        ["@number"] = { link = "Number" },
+        ["@number.float"] = { link = "Float" },
 
-        -- Functions
-        ["@function"] = { link = "Function" },             -- For function (calls and definitions).
-        ["@function.builtin"] = { fg = p.rose },           -- For builtin functions: table.insert in Lua.
-        ["@function.call"] = { link = "Function" },        -- function calls
-        ["@function.macro"] = { fg = p.seafoam },          -- For macro defined functions (calls and definitions): each macro_rules in Rust.
 
-        ["@function.method"] = { link = "Function" },      -- For method definitions.
-        ["@function.method.call"] = { link = "Function" }, -- For method calls.
+        ["@type"] = { link = "Type" },
+        ["@type.builtin"] = { fg = p.sunset, style = "italic" },
+        ["@type.definition"] = { link = "Type" },
 
-        ["@constructor"] = { fg = p.mint },                -- For constructor calls and definitions: = { } in Lua, and Java constructors.
-        ["@operator"] = { link = "Operator" },             -- For any operator: +, but also -> and * in C.
+        ["@attribute"] = { link = "Constant" },
+        ["@property"] = { fg = p.quartz },
 
-        -- Keywords
-        ["@keyword"] = { link = "Keyword" },                      -- For keywords that don't fall in previous categories.
-        ["@keyword.modifier"] = { link = "Keyword" },             -- For keywords modifying other constructs (e.g. `const`, `static`, `public`)
-        ["@keyword.type"] = { link = "Keyword" },                 -- For keywords describing composite types (e.g. `struct`, `enum`)
-        ["@keyword.coroutine"] = { link = "Keyword" },            -- For keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-        ["@keyword.function"] = { fg = p.velvet },                -- For keywords used to define a function.
-        ["@keyword.operator"] = { link = "Operator" },            -- For new keyword operator
-        ["@keyword.import"] = { link = "Include" },               -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
-        ["@keyword.repeat"] = { link = "Repeat" },                -- For keywords related to loops.
+
+        ["@function"] = { link = "Function" },
+        ["@function.builtin"] = { fg = p.rose },
+        ["@function.call"] = { link = "Function" },
+        ["@function.macro"] = { fg = p.seafoam },
+
+        ["@function.method"] = { link = "Function" },
+        ["@function.method.call"] = { link = "Function" },
+
+        ["@constructor"] = { fg = p.mint },
+        ["@operator"] = { link = "Operator" },
+
+
+        ["@keyword"] = { link = "Keyword" },
+        ["@keyword.modifier"] = { link = "Keyword" },
+        ["@keyword.type"] = { link = "Keyword" },
+        ["@keyword.coroutine"] = { link = "Keyword" },
+        ["@keyword.function"] = { fg = p.velvet },
+        ["@keyword.operator"] = { link = "Operator" },
+        ["@keyword.import"] = { link = "Include" },
+        ["@keyword.repeat"] = { link = "Repeat" },
         ["@keyword.return"] = { fg = p.velvet },
-        ["@keyword.debug"] = { link = "Exception" },              -- For keywords related to debugging
-        ["@keyword.exception"] = { link = "Exception" },          -- For exception related keywords.
+        ["@keyword.debug"] = { link = "Exception" },
+        ["@keyword.exception"] = { link = "Exception" },
 
-        ["@keyword.conditional"] = { link = "Conditional" },      -- For keywords related to conditionnals.
-        ["@keyword.conditional.ternary"] = { link = "Operator" }, -- For ternary operators (e.g. `?` / `:`)
+        ["@keyword.conditional"] = { link = "Conditional" },
+        ["@keyword.conditional.ternary"] = { link = "Operator" },
 
-        ["@keyword.directive"] = { link = "PreProc" },            -- various preprocessor directives & shebangs
-        ["@keyword.directive.define"] = { link = "Define" },      -- preprocessor definition directives
-        -- JS & derivative
+        ["@keyword.directive"] = { link = "PreProc" },
+        ["@keyword.directive.define"] = { link = "Define" },
+
         ["@keyword.export"] = { fg = p.sky },
 
-        -- Punctuation
-        ["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters (e.g. `;` / `.` / `,`).
-        ["@punctuation.bracket"] = { fg = p.glow },          -- For brackets and parenthesis.
-        ["@punctuation.special"] = { link = "Special" },     -- For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
 
-        -- Comment
+        ["@punctuation.delimiter"] = { link = "Delimiter" },
+        ["@punctuation.bracket"] = { link = "Delimiter" },
+        ["@punctuation.special"] = { link = "Special" },
+
+
         ["@comment"] = { link = "Comment" },
-        ["@comment.documentation"] = { link = "Comment" }, -- For comments documenting code
+        ["@comment.documentation"] = { link = "Comment" },
 
         ["@comment.error"] = { fg = p.void, bg = p.ember },
         ["@comment.warning"] = { fg = p.void, bg = p.sunset },
@@ -257,48 +257,48 @@ theme.loadTreesitter = function()
         ["@comment.todo"] = { fg = p.void, bg = p.lone },
         ["@comment.note"] = { fg = p.void, bg = p.floss },
 
-        -- Markup
-        ["@markup"] = { fg = p.moonglow },                                        -- For strings considerated text in a markup language.
-        ["@markup.strong"] = { fg = p.blaze, style = "bold" },                    -- bold
-        ["@markup.italic"] = { fg = p.blaze, style = "italic" },                  -- italic
-        ["@markup.strikethrough"] = { fg = p.moonglow, style = "strikethrough" }, -- strikethrough text
-        ["@markup.underline"] = { link = "Underlined" },                          -- underlined text
 
-        ["@markup.heading"] = { fg = p.sky, style = "bold" },                     -- titles like: # Example
+        ["@markup"] = { fg = p.moonglow },
+        ["@markup.strong"] = { fg = p.blaze, style = "bold" },
+        ["@markup.italic"] = { fg = p.blaze, style = "italic" },
+        ["@markup.strikethrough"] = { fg = p.moonglow, style = "strikethrough" },
+        ["@markup.underline"] = { link = "Underlined" },
 
-        ["@markup.math"] = { fg = p.mist },                                       -- math environments (e.g. `$ ... $` in LaTeX)
-        ["@markup.quote"] = { fg = p.nova, style = "bold" },                      -- block quotes
-        ["@markup.environment"] = { fg = p.lilac },                               -- text environments of markup languages
-        ["@markup.environment.name"] = { fg = p.mist },                           -- text indicating the type of an environment
+        ["@markup.heading"] = { fg = p.sky, style = "bold" },
 
-        ["@markup.link"] = { link = "Tag" },                                      -- text references, footnotes, citations, etc.
-        ["@markup.link.label"] = { link = "Label" },                              -- link, reference descriptions
-        ["@markup.link.url"] = { fg = p.rose, style = "italic", "underline" },    -- urls, links and emails
+        ["@markup.math"] = { fg = p.mist },
+        ["@markup.quote"] = { fg = p.nova, style = "bold" },
+        ["@markup.environment"] = { fg = p.lilac },
+        ["@markup.environment.name"] = { fg = p.mist },
 
-        ["@markup.raw"] = { fg = p.cygnus },                                      -- used for inline code in markdown and for doc in python (""")
+        ["@markup.link"] = { link = "Tag" },
+        ["@markup.link.label"] = { link = "Label" },
+        ["@markup.link.url"] = { fg = p.rose, style = "italic", "underline" },
+
+        ["@markup.raw"] = { fg = p.cygnus },
 
         ["@markup.list"] = { link = "Special" },
-        ["@markup.list.checked"] = { fg = p.moss },   -- todo notes
-        ["@markup.list.unchecked"] = { fg = p.dust }, -- todo notes
+        ["@markup.list.checked"] = { fg = p.moss },
+        ["@markup.list.unchecked"] = { fg = p.dust },
 
-        -- Diff
-        ["@diff.plus"] = { link = "diffAdded" },    -- added text (for diff files)
-        ["@diff.minus"] = { link = "diffRemoved" }, -- deleted text (for diff files)
-        ["@diff.delta"] = { link = "diffChanged" }, -- deleted text (for diff files)
 
-        -- Tags
-        ["@tag"] = { fg = p.velvet },                              -- Tags like html tag names.
-        ["@tag.attribute"] = { fg = p.seafoam, style = "italic" }, -- Tags like html tag names.
-        ["@tag.delimiter"] = { fg = p.sky },                       -- Tag delimiter like < > /
+        ["@diff.plus"] = { link = "diffAdded" },
+        ["@diff.minus"] = { link = "diffRemoved" },
+        ["@diff.delta"] = { link = "diffChanged" },
 
-        -- Misc
+
+        ["@tag"] = { fg = p.velvet },
+        ["@tag.attribute"] = { fg = p.seafoam, style = "italic" },
+        ["@tag.delimiter"] = { fg = p.sky },
+
+
         ["@error"] = { link = "Error" },
 
-        -- Language specific:
-        -- bash
+
+
         ["@function.builtin.bash"] = { fg = p.velvet, style = "italic" },
 
-        -- css
+
         ["@property.css"] = { fg = p.glow },
         ["@property.id.css"] = { fg = p.hallow },
         ["@property.class.css"] = { fg = p.sunset },
@@ -307,70 +307,108 @@ theme.loadTreesitter = function()
         ["@string.plain.css"] = { fg = p.lilac },
         ["@number.css"] = { fg = p.lilac },
 
-        -- toml
-        ["@property.toml"] = { fg = p.hallow }, -- Differentiates between string and properties
 
-        -- json
-        ["@label.json"] = { fg = p.hallow }, -- For labels: label: in C and :label: in Lua.
+        ["@property.toml"] = { fg = p.hallow },
 
-        -- lua
-        ["@constructor.lua"] = { fg = p.lilac }, -- For constructor calls and definitions: = { } in Lua.
 
-        -- typescript
+        ["@label.json"] = { fg = p.hallow },
+
+
+        ["@constructor.lua"] = { fg = p.lilac },
+
+
         ["@property.typescript"] = { fg = p.glow },
         ["@constructor.typescript"] = { fg = p.glow },
 
-        -- TSX (Typescript React)
+
         ["@constructor.tsx"] = { fg = p.glow },
         ["@tag.attribute.tsx"] = { fg = p.cygnus, style = "italic" },
 
-        -- yaml
-        ["@variable.member.yaml"] = { fg = p.mist }, -- For fields.
+
+        ["@variable.member.yaml"] = { fg = p.mist },
 
 
-        -- C/CPP
+
         ["@type.builtin.c"] = { fg = p.sunset },
         ["@property.cpp"] = { fg = p.moonglow },
         ["@type.builtin.cpp"] = { fg = p.sunset },
 
-        -- gitcommit
+
         ["@comment.warning.gitcommit"] = { fg = p.sunset },
 
-        -- Misc
+
         gitcommitSummary = { fg = p.rose, style = "italic" },
         zshKSHFunction = { link = "Function" },
     }
     return treesitter
 end
 
--- theme.loadLsp = function()
--- 	local lsp = {
--- 		LspDiagnosticsDefaultError = { fg = p.ember, bg = p.velvet, style = "bold" },
--- 		LspDiagnosticsDefaultHint = { fg = p.stellar, bg = p.wormhole, style = "bold" },
--- 		LspDiagnosticsDefaultInformation = { fg = p.seafoam, bg = p.mist, style = "bold" },
--- 		LspDiagnosticsDefaultWarning = { fg = p.sunglow, bg = p.sunset, style = "bold" },
--- 		LspDiagnosticsFloatingError = { fg = p.ember, style = "bold" },
--- 		LspDiagnosticsFloatingHint = { fg = p.seafoam },
--- 		LspDiagnosticsFloatingInformation = { fg = p.moonshine },
--- 		LspDiagnosticsFloatingWarning = { fg = p.sunglow },
--- 		LspDiagnosticsSignError = { fg = p.ember, style = "bold" },
--- 		LspDiagnosticsSignHint = { fg = p.seafoam },
--- 		LspDiagnosticsSignInformation = { fg = p.moonshine },
--- 		LspDiagnosticsSignWarning = { fg = p.sunglow },
--- 		LspDiagnosticsUnderlineError = { style = "undercurl", sp = p.ember },
--- 		LspDiagnosticsUnderlineHint = { style = "undercurl", sp = p.seafoam },
--- 		LspDiagnosticsUnderlineInformation = { style = "undercurl", sp = p.moonshine },
--- 		LspDiagnosticsUnderlineWarning = { style = "undercurl", sp = p.sunglow },
--- 		LspDiagnosticsVirtualTextError = { fg = p.ember, bg = p.velvet, style = "bold" },
--- 		LspDiagnosticsVirtualTextHint = { fg = p.seafoam, bg = p.cygnus, style = "bold" },
--- 		LspDiagnosticsVirtualTextInformation = { fg = p.moonshine, bg = p.wormhole, style = "bold" },
--- 		LspDiagnosticsVirtualTextWarning = { fg = p.sunglow, bg = p.sunset, style = "bold" },
--- 		LspReferenceRead = { fg = nil, bg = nil, style = "underline" },
--- 		LspReferenceWrite = { fg = nil, bg = nil, style = "underline" },
--- 		LspReferenceText = { fg = nil, bg = nil, style = "underline" },
--- 	}
---
--- 	return lsp
--- end
+theme.loadLsp = function()
+    local lsp = {
+        LspReferenceText  = { bg = p.moonglow },
+        LspReferenceRead  = { bg = p.moonglow },
+        LspReferenceWrite = { bg = p.moonglow },
+
+
+        DiagnosticVirtualTextError           = { fg = p.ember, style = "italic,bold" },
+        DiagnosticVirtualTextWarn            = { fg = p.sunset, style = "italic,bold" },
+        DiagnosticVirtualTextInfo            = { fg = p.moonlight, style = "italic,bold" },
+        DiagnosticVirtualTextHint            = { fg = p.mist, style = "italic,bold" },
+        DiagnosticVirtualTextOk              = { fg = p.floss, style = "italic,bold" },
+
+        DiagnosticError                      = { bg = nil, fg = p.ember, style = "italic" },
+        DiagnosticWarn                       = { bg = nil, fg = p.sunst, style = "italic" },
+        DiagnosticInfo                       = { bg = nil, fg = p.moonlight, style = "italic" },
+        DiagnosticHint                       = { bg = nil, fg = p.mist, style = "italic" },
+        DiagnosticOk                         = { bg = nil, fg = p.floss, style = "italic" },
+
+        DiagnosticUnderlineError             = { style = "undercurl", sp = p.ember },
+        DiagnosticUnderlineWarn              = { style = "undercurl", sp = p.sunset },
+        DiagnosticUnderlineInfo              = { style = "underline", sp = p.moonlight },
+        DiagnosticUnderlineHint              = { style = "underline", sp = p.mist },
+        DiagnosticUnderlineOk                = { style = "underline", sp = p.floss },
+
+        DiagnosticFloatingError              = { fg = p.ember },
+        DiagnosticFloatingWarn               = { fg = p.sunset },
+        DiagnosticFloatingInfo               = { fg = p.moonlight },
+        DiagnosticFloatingHint               = { fg = p.mist },
+        DiagnosticFloatingOk                 = { fg = p.floss },
+
+        DiagnosticSignError                  = { fg = p.ember },
+        DiagnosticSignWarn                   = { fg = p.sunset },
+        DiagnosticSignInfo                   = { fg = p.moonlight },
+        DiagnosticSignHint                   = { fg = p.mist },
+        DiagnosticSignOk                     = { fg = p.floss },
+
+        LspDiagnosticsDefaultError           = { fg = p.ember },
+        LspDiagnosticsDefaultWarning         = { fg = p.sunset },
+        LspDiagnosticsDefaultInformation     = { fg = p.moonlight },
+        LspDiagnosticsDefaultHint            = { fg = p.mist },
+        LspSignatureActiveParameter          = { fg = p.velvet },
+        LspDiagnosticsFloatingError          = { fg = p.ember },
+        LspDiagnosticsFloatingWarning        = { fg = p.sunset },
+        LspDiagnosticsFloatingInformation    = { fg = p.moonlight },
+        LspDiagnosticsFloatingHint           = { fg = p.mist },
+
+        LspDiagnosticsError                  = { fg = p.ember },
+        LspDiagnosticsWarning                = { fg = p.sunset },
+        LspDiagnosticsInformation            = { fg = p.moonlight },
+        LspDiagnosticsHint                   = { fg = p.mist },
+        LspDiagnosticsVirtualTextError       = { fg = p.ember, style = "italic" },
+        LspDiagnosticsVirtualTextWarning     = { fg = p.sunset, style = "italic" },
+        LspDiagnosticsVirtualTextInformation = { fg = p.moonlight, style = "italic" },
+        LspDiagnosticsVirtualTextHint        = { fg = p.mist, style = "italic" },
+        LspDiagnosticsUnderlineError         = { style = "italic", sp = p.ember },
+        LspDiagnosticsUnderlineWarning       = { style = "italic", sp = p.sunset },
+        LspDiagnosticsUnderlineInformation   = { style = "italic", sp = p.moonlight },
+        LspDiagnosticsUnderlineHint          = { style = "italic", sp = p.mist },
+        LspCodeLens                          = { fg = p.lunar },
+        LspCodeLensSeparator                 = { link = "LspCodeLens" },
+        LspInlayHint                         = { fg = p.lunar, bg = nil },
+        LspInfoBorder                        = { link = "FloatBorder" },
+    }
+
+    return lsp
+end
 
 return theme
